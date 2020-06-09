@@ -1,0 +1,17 @@
+.container {
+  align-items: center;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  justify-content: center;
+}
+
+.container > div {
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  margin-top: -12%;
+}
