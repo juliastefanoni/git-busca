@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -14,11 +13,9 @@ const Search = () => {
       <div className="container-search">
         <h1> gitbusca </h1>
 
-        <input type="text" placeholder="Digite o username" />
+        <input type="text" placeholder="Type username" />
 
-        <Link to="/user">
-          <button type="submit"> Pesquisar </button>
-        </Link>
+        <button type="submit">Search</button>
       </div>
     </div>
   );
