@@ -10,53 +10,53 @@
 </p>
 <br>
 
-<h2> :paperclip: &nbsp Funcionalidades </h2>
-<p> :heavy_check_mark: &nbsp Pesquisar usuários do github pelo username</p>
-<p> :heavy_check_mark: &nbsp Ver detalhes do usuário</p>
-<p> :heavy_check_mark: &nbsp Ver a listagem dos repositórios do usuário que foi buscado, ordenados pelo número decrescente de estrelas</p>
+<h2> :paperclip: &nbsp Functionalities </h2>
+<p> :heavy_check_mark: &nbsp Search for github users by username </p>
+<p> :heavy_check_mark: &nbsp View user details</p>
+<p> :heavy_check_mark: &nbsp See a list of the repositories of the user that was searched for, ordered by decreasing number of stars</p>
 
 <br>
 
-<h2> Deploy da aplicação no Netlify</h2>
+<h2> Deployment of the application on Netlify </h2>
 
-> https://certificates-for-everyone-womakerscode.netlify.app/
+> https://gitbusca.netlify.app/
 
 <br>
 
-<h2> :construction: &nbsp Pré-requisitos </h2>
+<h2> :construction: &nbsp Requirements </h2>
  
 - Yarn
-- Npm (opcional)
+- Npm (optional)
 
 <br>
 
-<h2> :arrow_forward: &nbsp Rodando a aplicação </h2>
+<h2> :arrow_forward: &nbsp Running the application </h2>
 
-No terminal, clone o projeto:
+At the terminal, clone the project:
 
 ``git clone https://github.com/juliastefanoni/git-busca.git``
 
-Entre no diretório do projeto:
+Go to the project folder:
 
 ``cd git-busca``
 
-Instale as dependências:
+Install the dependencies:
 
 ``yarn install``
 
-Execute a aplicação:
+Run the application:
 
 ``yarn start``
  
-Agora, a aplicação está disponível localmente a partir da rota http://localhost:3000/
+The application is now available locally from the route http://localhost:3000/
 
 <br>
-<h2>:books: &nbsp  Linguagens, dependências e libs</h2>
+<h2>:books: &nbsp  Dependencies and libraries</h2>
 
 - [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 
-<h2>Licença</h2>
+<h2>License</h2>
 
 The [MIT License]() (MIT)
 
