@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaRegStar } from 'react-icons/fa';
 import { GoRepoForked, GoLocation } from 'react-icons/go';
-import { AiOutlineMail } from 'react-icons/ai';
+
+import api from '../../services/api';
+import orderByStars from '../../utils/orderRepositories';
 
 import './styles.css';
 
 const User = () => {
+  const [repositories, setRepositories] = useState([]);
+  const [user, setUser] = useState({});
+
+  const username = localStorage.getItem('username');
+
+  useEffect(() => {
+    api.get(`/${username}/repos`).then( async (response) => {
+      const repositoriesOrderByStars = await orderByStars(response);
+      setRepositories(repositoriesOrderByStars);
+    });
+  }, [username]);
+
+  useEffect(() => {
+    api.get(`/${username}`).then((response) => {
+      setUser(response.data);
+    });
+  }, [username]);
+
+
   return (
     <div className="container-user">
       <div className="profile">
@@ -15,38 +36,37 @@ const User = () => {
           Search for users
         </Link>
 
-        <img src="#" alt="Profile" width="150" height="150" />
-        <p className="profile-name">Julia Stefanoni Mendes</p>
+        <img src={user.avatar_url} alt="Profile" width="150" height="150" />
+        <p className="profile-name"> {user.name}</p>
         <p>
-          <strong> 410 </strong>followers &nbsp;
-          <strong> 18505 </strong>following
+          <strong> {user.followers} </strong>followers &nbsp;
+          <strong> {user.following} </strong>following
         </p>
-        <p> Software Developer </p>
-      </div>
+        <p> {user.bio} </p>
       <div className="profile-details">
-        <p>
-          <AiOutlineMail size={14} />
-          &nbsp; juliastefanonidev@gmail.com
-        </p>
+        <p> {user.company} </p>
         <p>
           <GoLocation size={14} />
-          &nbsp; São paulo
+          &nbsp; {user.location}
         </p>
+      </div>
       </div>
       <div className="repositories">
         <ul>
-          <li>
-            <p>
-              <strong>Semana OmniStack 11 - be the hero</strong>
-            </p>
-            <p>
-              Projeto desenvolvido na semana OmniStack usando react e node
-              <span className="reactions">
-                <FaRegStar size={22} /> 150
-                <GoRepoForked size={22} /> 20
-              </span>
-            </p>
-          </li>
+          {repositories.map(repository => (
+            <li key={repository.id}>
+              <p>
+                <strong> {repository.name} </strong>
+              </p>
+              <p>
+                {repository.description}
+                <span className="reactions">
+                  <FaRegStar size={22} /> {repository.stargazers_count}
+                  <GoRepoForked size={22} /> {repository.forks_count}
+                </span>
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
@@ -54,3 +74,5 @@ const User = () => {
 };
 
 export default User;
+
+
