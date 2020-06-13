@@ -27,7 +27,6 @@ const User = () => {
     });
   }, [username]);
 
-
   return (
     <div className="container-user">
       <div className="profile">

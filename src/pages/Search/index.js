@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import swal from 'sweetalert';
 
 import api from '../../services/api';
+import { missingUsername, userNotFound } from '../../utils/error';
 
 import './styles.css';
 
 import codeImg from '../../assets/code.svg';
 
 const Search = () => {
-  const [username, setUserName] = useState('');
+  const [username, setUsername] = useState('');
 
   const history = useHistory();
 
@@ -17,31 +17,18 @@ const Search = () => {
     e.preventDefault();
 
     if (!username) {
-      swal({
-        icon: 'error',
-        title: 'Ops!',
-        text: 'Enter username to continue.',
-        buttons: false,
-        timer: 2000,
-      });
+      missingUsername();
       return;
     }
 
     try {
       const user = await api.get(`/${username}`);
-      console.log(user);
 
       localStorage.setItem('username', user.data.login);
 
       history.push('/user');
     } catch (error) {
-      swal({
-        icon: 'error',
-        title: 'Ops, user not found!',
-        text: 'Try again.',
-        buttons: false,
-        timer: 2000,
-      });
+      userNotFound();
     }
   }
   return (
@@ -55,7 +42,7 @@ const Search = () => {
         <input
           type="text"
           placeholder="Type username"
-          onChange={(event) => setUserName(event.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
         />
 
         <button type="submit" onClick={handleSearch}>
