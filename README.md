@@ -55,6 +55,7 @@ The application is now available locally from the route http://localhost:3000/
 
 - [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [Sweet Alert](https://sweetalert.js.org/)
 
 <h2>License</h2>
 
